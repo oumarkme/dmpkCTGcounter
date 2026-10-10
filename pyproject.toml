@@ -1,0 +1,9 @@
+[project]
+name = "dmpkctgcounter"
+version = "0.1.0"
+description = "CTG repeat units of the two DMPK alleles from one ONT BAM or CRAM (GRCh38)."
+requires-python = "==3.12.*"
+dependencies = ["pysam==0.23.3", "edlib==1.3.9.post1", "numpy==2.4.6"]
+
+[project.scripts]
+dmpkCTGcounter = "dmpkctgcounter.cli:main"

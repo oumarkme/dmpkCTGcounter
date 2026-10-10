@@ -1,0 +1,45 @@
+# Apptainer definition for dmpkCTGcounter (Apptainer documentation conventions).
+# Build (from the subproject directory):
+#   apptainer build env/dmpk.sif env/dmpk.def
+# Base image: official Python 3.12.12 on Debian 12 (bookworm), pinned by
+# digest of the multi-arch index (tag python:3.12.12-slim-bookworm).
+Bootstrap: docker
+From: python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+
+%files
+    env/requirements.txt /opt/dmpkctgcounter/requirements.txt
+    src /opt/dmpkctgcounter/src
+
+%post
+    set -eu
+    python -m pip install --no-cache-dir --disable-pip-version-check \
+        pip==26.1.2
+    python -m pip install --no-cache-dir --disable-pip-version-check \
+        --only-binary=:all: --no-deps \
+        -r /opt/dmpkctgcounter/requirements.txt
+    python -m pip check
+    mkdir -p /opt/provenance
+    python -m pip freeze > /opt/provenance/pip-freeze.txt
+    printf '#!/bin/sh\nexec python -m dmpkctgcounter "$@"\n' \
+        > /usr/local/bin/dmpkCTGcounter
+    chmod 0755 /usr/local/bin/dmpkCTGcounter
+
+%environment
+    export PYTHONPATH=/opt/dmpkctgcounter/src
+    export PYTHONNOUSERSITE=1
+    export PYTHONDONTWRITEBYTECODE=1
+    export LC_ALL=C.UTF-8
+
+%runscript
+    exec dmpkCTGcounter "$@"
+
+%labels
+    Software dmpkCTGcounter
+    Version 0.1.0
+    Platform ONT
+    Reference GRCh38
+
+%help
+    dmpkCTGcounter: CTG repeat units of the two DMPK alleles from one ONT
+    BAM or CRAM (GRCh38).
+      apptainer run --bind /path/to/data env/dmpk.sif sample.bam
