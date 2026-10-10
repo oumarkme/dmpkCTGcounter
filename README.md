@@ -160,7 +160,7 @@ Tsai, M.-J. M., et al. (n.d.). *Congenital myotonic dystrophy type 1 as a sentin
 
 A full reference will replace this entry upon publication. 
 
-Software maintained by Jen-Hsiang Ou [oujenhsiang@ntu.edu.tw], Department of Medical Genetics, National Taiwan University Hospital, maintains the software (version 0.1.0).
+Software maintained by Jen-Hsiang Ou [oujenhsiang@ntu.edu.tw], Department of Medical Genetics, National Taiwan University Hospital.
 
 ## References
 
