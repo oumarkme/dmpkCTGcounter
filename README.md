@@ -125,7 +125,7 @@ Flags that describe the whole run are written on both rows.
 |---|---|
 | `NO_READS_IN_REGION` | No record in chr19:45,760,000-45,780,000. |
 | `NO_USABLE_READS` | Records present, but all were skipped or excluded before measurement (flags, duplex parent, hard clips, MAPQ). |
-| `NO_SPANNING_READS` | Reads were measured, none spans the tract. |
+| `NO_SPANNING_READS` | Reads were measured; none span the tract. |
 | `LOW_DEPTH` | Fewer than 5 spanning reads. |
 | `SINGLE_LENGTH_OBSERVED` | Only one length class; allele 2 is NA. |
 | `SINGLE_READ_ALLELE` | The allele rests on one read below 50 units. |
@@ -156,9 +156,11 @@ MIT; see [LICENSE](LICENSE).
 
 The software supports the *DMPK* repeat counts in an unpublished manuscript. Please cite:
 
-Tsai, M.-J. M., Ou, J.-H., et al. (n.d.). *Congenital myotonic dystrophy type 1 as a sentinel diagnosis: Intergenerational epigenetic divergence and underrecognized maternal DM1* [Manuscript in preparation]. National Taiwan University Hospital.
+Tsai, M.-J. M., et al. (n.d.). *Congenital myotonic dystrophy type 1 as a sentinel diagnosis: Intergenerational epigenetic divergence and underrecognized maternal DM1* [Manuscript in preparation]. National Taiwan University Hospital.
 
-A full reference will replace this entry on publication. Jen-Hsiang Ou, Ph.D., Department of Medical Genetics, National Taiwan University Hospital, maintains the software (version 0.1.0).
+A full reference will replace this entry upon publication. 
+
+Software maintained by Jen-Hsiang Ou <oujenhsiang@ntu.edu.tw>, Department of Medical Genetics, National Taiwan University Hospital, maintains the software (version 0.1.0).
 
 ## References
 
